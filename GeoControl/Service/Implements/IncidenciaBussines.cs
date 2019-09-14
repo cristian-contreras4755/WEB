@@ -125,9 +125,20 @@ namespace Bussines.Implements
             return _IncidenciaRepository.MedioSolicitud_Elim(IdMedSol);
         }
 
-   
 
 
+        #endregion
+
+
+        #region Asignacion
+        public Task<CommonResult<AsignacionModel>> Asignacion_Crea(AsignacionModel asignacion)
+        {
+            return _IncidenciaRepository.Asignacion_Crea(asignacion);
+        }
+        public Task<CommonResult<AsignacionModel>> Asignacion_Elim(AsignacionModel asignacion)
+        {
+            return _IncidenciaRepository.Asignacion_Elim(asignacion);
+        }
         #endregion
 
 

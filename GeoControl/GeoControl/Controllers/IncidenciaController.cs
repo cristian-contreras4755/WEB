@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Bussines.Interfaces;
+using GeoControl.Models.Incidencias;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Model.Incidencia;
@@ -389,6 +390,57 @@ namespace GeoControl.Controllers
         #endregion
 
 
+
+        #region asignacion
+
+
+        [HttpPost]
+        public async Task<ActionResult> Asignacion_Crea([FromBody]AsignacionViewModel asignacionViewModel)
+        {
+
+            AsignacionModel asignacion = new AsignacionModel();
+            asignacion.IdAsignacion=0;
+         asignacion.IdPersona = asignacionViewModel.IdPersona;
+        asignacion.IdIncidencia = asignacionViewModel.IdIncidencia;
+       asignacion.IdUsuReg = idusuario;
+            asignacion.IB_principal = asignacionViewModel.IB_principal;
+         
+
+            var data = await _incidenciaBussines.Asignacion_Crea(asignacion);
+            if (data.Exito)
+            {
+
+                    return Ok(new { data = "Asignación registrada." });
+            }
+            else
+            {
+                return BadRequest(new { data = data.MsjDB });
+            }
+
+        }
+
+        [HttpDelete]
+        public async Task<ActionResult> Asignacion_Elim([FromBody]int IdAsignacion)
+        {
+
+            AsignacionModel asignacion = new AsignacionModel();
+            asignacion.IdAsignacion = IdAsignacion;
+            var data = await _incidenciaBussines.Asignacion_Elim(asignacion);
+            if (data.Exito)
+            {
+                return Ok(new { data = "Asignación Elminada" });
+            }
+            else
+            {
+                return BadRequest(new { data = data.MsjDB });
+            }
+
+        }
+
+
+
+
+        #endregion
 
 
     }

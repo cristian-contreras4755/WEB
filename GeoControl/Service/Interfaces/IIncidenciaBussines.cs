@@ -47,5 +47,12 @@ namespace Bussines.Interfaces
         #endregion
 
 
+
+        #region Asignacion
+
+        Task<CommonResult<AsignacionModel>> Asignacion_Crea(AsignacionModel asignacion);
+        Task<CommonResult<AsignacionModel>> Asignacion_Elim(AsignacionModel asignacion);
+        #endregion
+
     }
 }

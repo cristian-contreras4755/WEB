@@ -748,5 +748,95 @@ namespace Repository.Implements
         {
             throw new NotImplementedException();
         }
+
+
+
+
+        #region Asignacion
+
+        public async Task<CommonResult<AsignacionModel>> Asignacion_Crea(AsignacionModel asignacion)
+        {
+
+            CommonResult<AsignacionModel> _commonResult = new CommonResult<AsignacionModel>();
+            try
+            {
+
+                using (IDbConnection conexion = new SqlConnection(_Iconexion.GetConexion()))
+                {
+                    var Parameters = new DynamicParameters();
+                    Parameters.Add("@IdPersona", asignacion.IdPersona, dbType: DbType.Int32, direction: ParameterDirection.Input);
+                    Parameters.Add("@IdIncidencia", asignacion.IdIncidencia, dbType: DbType.Int32, direction: ParameterDirection.Input);
+                    Parameters.Add("@IdUsuReg", asignacion.IdUsuReg, dbType: DbType.Int32, direction: ParameterDirection.Input);
+                    Parameters.Add("@IB_principal", asignacion.IB_principal, dbType: DbType.Boolean, direction: ParameterDirection.Input);
+                    Parameters.Add("@msj", dbType: DbType.String, direction: ParameterDirection.Output, size: 200);
+                    var Result = await conexion.ExecuteScalarAsync("SP_Asignacion_crea", param: Parameters, commandType: CommandType.StoredProcedure);
+                    string PCmsj = Parameters.Get<string>("@msj");
+                    if (String.IsNullOrEmpty(PCmsj))
+                    {
+                        _commonResult.Exito = true;
+                        return _commonResult;
+                    }
+                    else
+                    {
+                        _commonResult.Exito = false;
+                        _commonResult.MsjDB = PCmsj;
+                        _commonResult.MsjError = "";
+                        return _commonResult;
+                    }
+                }
+
+            }
+            catch (Exception ex)
+            {
+                _commonResult.Exito = false;
+                _commonResult.MsjDB = "";
+                _commonResult.MsjError = ex.Message;
+                return _commonResult;
+
+            }
+
+
+        }
+
+        public  async Task<CommonResult<AsignacionModel>> Asignacion_Elim(AsignacionModel asignacion)
+        {
+            CommonResult<AsignacionModel> _commonResult = new CommonResult<AsignacionModel>();
+            try
+            {
+
+                using (IDbConnection conexion = new SqlConnection(_Iconexion.GetConexion()))
+                {
+                    var Parameters = new DynamicParameters();
+                    Parameters.Add("@IdAsignacion", asignacion.IdAsignacion, dbType: DbType.Int32, direction: ParameterDirection.Input);               
+                    Parameters.Add("@msj", dbType: DbType.String, direction: ParameterDirection.Output, size: 200);
+                    var Result = await conexion.ExecuteScalarAsync("SP_Asignacion_Elim", param: Parameters, commandType: CommandType.StoredProcedure);
+                    string PCmsj = Parameters.Get<string>("@msj");
+                    if (String.IsNullOrEmpty(PCmsj))
+                    {
+                        _commonResult.Exito = true;
+                        return _commonResult;
+                    }
+                    else
+                    {
+                        _commonResult.Exito = false;
+                        _commonResult.MsjDB = PCmsj;
+                        _commonResult.MsjError = "";
+                        return _commonResult;
+                    }
+                }
+
+            }
+            catch (Exception ex)
+            {
+                _commonResult.Exito = false;
+                _commonResult.MsjDB = "";
+                _commonResult.MsjError = ex.Message;
+                return _commonResult;
+
+            }
+        }
+
+        #endregion
+
     }
 }
