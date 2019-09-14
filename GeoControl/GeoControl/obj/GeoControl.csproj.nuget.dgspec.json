@@ -1,0 +1,319 @@
+{
+  "format": 1,
+  "restore": {
+    "D:\\PROYECTO - TESIS 2019\\WEB\\GeoControl\\GeoControl\\GeoControl.csproj": {}
+  },
+  "projects": {
+    "D:\\PROYECTO - TESIS 2019\\WEB\\GeoControl\\Common\\Common.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\PROYECTO - TESIS 2019\\WEB\\GeoControl\\Common\\Common.csproj",
+        "projectName": "Common",
+        "projectPath": "D:\\PROYECTO - TESIS 2019\\WEB\\GeoControl\\Common\\Common.csproj",
+        "packagesPath": "C:\\Users\\CR26\\.nuget\\packages\\",
+        "outputPath": "D:\\PROYECTO - TESIS 2019\\WEB\\GeoControl\\Common\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\CR26\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp2.2"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp2.2": {
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp2.2": {
+          "dependencies": {
+            "Microsoft.NETCore.App": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.2.0, )",
+              "autoReferenced": true
+            }
+          },
+          "imports": [
+            "net461"
+          ],
+          "assetTargetFallback": true,
+          "warn": true
+        }
+      }
+    },
+    "D:\\PROYECTO - TESIS 2019\\WEB\\GeoControl\\GeoControl\\GeoControl.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\PROYECTO - TESIS 2019\\WEB\\GeoControl\\GeoControl\\GeoControl.csproj",
+        "projectName": "GeoControl",
+        "projectPath": "D:\\PROYECTO - TESIS 2019\\WEB\\GeoControl\\GeoControl\\GeoControl.csproj",
+        "packagesPath": "C:\\Users\\CR26\\.nuget\\packages\\",
+        "outputPath": "D:\\PROYECTO - TESIS 2019\\WEB\\GeoControl\\GeoControl\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\CR26\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp2.2"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp2.2": {
+            "projectReferences": {
+              "D:\\PROYECTO - TESIS 2019\\WEB\\GeoControl\\Repository\\Repository\\Repository.csproj": {
+                "projectPath": "D:\\PROYECTO - TESIS 2019\\WEB\\GeoControl\\Repository\\Repository\\Repository.csproj"
+              },
+              "D:\\PROYECTO - TESIS 2019\\WEB\\GeoControl\\Service\\Bussines.csproj": {
+                "projectPath": "D:\\PROYECTO - TESIS 2019\\WEB\\GeoControl\\Service\\Bussines.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp2.2": {
+          "dependencies": {
+            "Microsoft.AspNetCore.App": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.2.0, )",
+              "autoReferenced": true
+            },
+            "Microsoft.AspNetCore.Razor.Design": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
+            "Microsoft.NETCore.App": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.2.0, )",
+              "autoReferenced": true
+            },
+            "Microsoft.VisualStudio.Azure.Containers.Tools.Targets": {
+              "target": "Package",
+              "version": "[1.0.2105168, )"
+            },
+            "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
+              "target": "Package",
+              "version": "[2.2.3, )"
+            },
+            "Swashbuckle.AspNetCore": {
+              "target": "Package",
+              "version": "[5.0.0-rc2, )"
+            }
+          },
+          "imports": [
+            "net461"
+          ],
+          "assetTargetFallback": true,
+          "warn": true
+        }
+      }
+    },
+    "D:\\PROYECTO - TESIS 2019\\WEB\\GeoControl\\Model\\Model.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\PROYECTO - TESIS 2019\\WEB\\GeoControl\\Model\\Model.csproj",
+        "projectName": "Model",
+        "projectPath": "D:\\PROYECTO - TESIS 2019\\WEB\\GeoControl\\Model\\Model.csproj",
+        "packagesPath": "C:\\Users\\CR26\\.nuget\\packages\\",
+        "outputPath": "D:\\PROYECTO - TESIS 2019\\WEB\\GeoControl\\Model\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\CR26\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp2.2"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp2.2": {
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp2.2": {
+          "dependencies": {
+            "Microsoft.NETCore.App": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.2.0, )",
+              "autoReferenced": true
+            }
+          },
+          "imports": [
+            "net461"
+          ],
+          "assetTargetFallback": true,
+          "warn": true
+        }
+      }
+    },
+    "D:\\PROYECTO - TESIS 2019\\WEB\\GeoControl\\Repository\\Repository\\Repository.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\PROYECTO - TESIS 2019\\WEB\\GeoControl\\Repository\\Repository\\Repository.csproj",
+        "projectName": "Repository",
+        "projectPath": "D:\\PROYECTO - TESIS 2019\\WEB\\GeoControl\\Repository\\Repository\\Repository.csproj",
+        "packagesPath": "C:\\Users\\CR26\\.nuget\\packages\\",
+        "outputPath": "D:\\PROYECTO - TESIS 2019\\WEB\\GeoControl\\Repository\\Repository\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\CR26\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp2.2"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp2.2": {
+            "projectReferences": {
+              "D:\\PROYECTO - TESIS 2019\\WEB\\GeoControl\\Common\\Common.csproj": {
+                "projectPath": "D:\\PROYECTO - TESIS 2019\\WEB\\GeoControl\\Common\\Common.csproj"
+              },
+              "D:\\PROYECTO - TESIS 2019\\WEB\\GeoControl\\Model\\Model.csproj": {
+                "projectPath": "D:\\PROYECTO - TESIS 2019\\WEB\\GeoControl\\Model\\Model.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp2.2": {
+          "dependencies": {
+            "Dapper": {
+              "target": "Package",
+              "version": "[1.60.6, )"
+            },
+            "Microsoft.NETCore.App": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.2.0, )",
+              "autoReferenced": true
+            }
+          },
+          "imports": [
+            "net461"
+          ],
+          "assetTargetFallback": true,
+          "warn": true
+        }
+      }
+    },
+    "D:\\PROYECTO - TESIS 2019\\WEB\\GeoControl\\Service\\Bussines.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\PROYECTO - TESIS 2019\\WEB\\GeoControl\\Service\\Bussines.csproj",
+        "projectName": "Bussines",
+        "projectPath": "D:\\PROYECTO - TESIS 2019\\WEB\\GeoControl\\Service\\Bussines.csproj",
+        "packagesPath": "C:\\Users\\CR26\\.nuget\\packages\\",
+        "outputPath": "D:\\PROYECTO - TESIS 2019\\WEB\\GeoControl\\Service\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\CR26\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp2.2"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp2.2": {
+            "projectReferences": {
+              "D:\\PROYECTO - TESIS 2019\\WEB\\GeoControl\\Common\\Common.csproj": {
+                "projectPath": "D:\\PROYECTO - TESIS 2019\\WEB\\GeoControl\\Common\\Common.csproj"
+              },
+              "D:\\PROYECTO - TESIS 2019\\WEB\\GeoControl\\Model\\Model.csproj": {
+                "projectPath": "D:\\PROYECTO - TESIS 2019\\WEB\\GeoControl\\Model\\Model.csproj"
+              },
+              "D:\\PROYECTO - TESIS 2019\\WEB\\GeoControl\\Repository\\Repository\\Repository.csproj": {
+                "projectPath": "D:\\PROYECTO - TESIS 2019\\WEB\\GeoControl\\Repository\\Repository\\Repository.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp2.2": {
+          "dependencies": {
+            "Microsoft.NETCore.App": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.2.0, )",
+              "autoReferenced": true
+            }
+          },
+          "imports": [
+            "net461"
+          ],
+          "assetTargetFallback": true,
+          "warn": true
+        }
+      }
+    }
+  }
+}

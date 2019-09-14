@@ -1,0 +1,20 @@
+{
+  "version": "1.0",
+  "defaultProvider": "cdnjs",
+  "libraries": [
+    {
+      "library": "vue@2.6.10",
+      "destination": "wwwroot/lib/vue/",
+      "files": [
+        "vue.js"
+      ]
+    },
+    {
+      "library": "sweetalert@2.1.2",
+      "destination": "wwwroot/lib/sweetalert/",
+      "files": [
+        "sweetalert.min.js"
+      ]
+    }
+  ]
+}

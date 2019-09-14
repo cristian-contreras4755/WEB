@@ -1,0 +1,185 @@
+﻿
+@{
+    ViewData["Title"] = "Sucursal";
+    Html.RenderPartial("_RutaNavegacion");
+}
+
+@section scripts{
+
+    <script src="~/Admin/assets/plugins/switchery/switchery.min.js"></script>
+    <script src="~/Admin/assets/js/Incidencia/Mantenimiento.js"></script>
+}
+
+
+<div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+        <div class="card mb-3">
+            <div class="card-header">
+                <div class="row">
+                    <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 col-xl-3">
+                        <div class="card mb-3">
+                            <div class="card-header">
+                                <h3><i class="fa fa-check-square-o"></i>Estado Incidencia</h3>
+                            </div>
+
+                            <div class="card-body">
+                                <div class="form-row">
+                                    <div class="form-group col-md-12">
+                                        <label for="inputEmail4">Descripcion(*)</label>
+                                        <input type="text" class="form-control" id="txt_Descripcion_EstInc" placeholder="Estado Incidencia" autocomplete="off">
+                                    </div>
+                                </div>
+
+                                <div class="form-row">
+                                    <button class="btn btn-success" id="btn_GuardarMdfEstInc"><i class="fa fa-floppy-o" aria-hidden="true"></i> Guardar</button>
+
+                                </div>
+                                <br />
+
+                                <div class="form-row">
+                                    <div class="table-responsive">
+                                        <table id="tbl_EstInc" class="table table-bordered table-hover display">
+                                            <thead>
+                                                <tr>
+                                                    <th>cod EstInc</th>
+                                                    <th>Descripción</th>
+                                                    <th>Opciones</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody></tbody>
+                                        </table>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div><!-- end card-->
+                    </div>
+
+
+                    <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 col-xl-3">
+                        <div class="card mb-3">
+                            <div class="card-header">
+                                <h3><i class="fa fa-check-square-o"></i>Tipo Incidencia</h3>
+                            </div>
+
+                            <div class="card-body">
+                                <div class="form-row">
+                                    <div class="form-group col-md-12">
+                                        <label for="inputEmail4">Descripcion(*)</label>
+                                        <input type="text" class="form-control" id="txt_Descripcion_TipInc" placeholder="Tipo Incidencia" autocomplete="off">
+                                    </div>
+                                </div>
+
+                                <div class="form-row">
+                                    <button class="btn btn-success" id="btn_GuardarMdfTipInc"><i class="fa fa-floppy-o" aria-hidden="true"></i> Guardar</button>
+
+                                </div>
+                                <br />
+
+                                <div class="form-row">
+                                    <div class="table-responsive">
+                                        <table id="tbl_TipInc" class="table table-bordered table-hover display">
+                                            <thead>
+                                                <tr>
+                                                    <th>cod TipInc</th>
+                                                    <th>Descripción</th>
+                                                    <th>Opciones</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody></tbody>
+                                        </table>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div><!-- end card-->
+                    </div>
+
+
+                    <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 col-xl-3">
+                        <div class="card mb-3">
+                            <div class="card-header">
+                                <h3><i class="fa fa-check-square-o"></i>Nivel Incidencia</h3>
+                            </div>
+
+                            <div class="card-body">
+                                <div class="form-row">
+                                    <div class="form-group col-md-12">
+                                        <label for="inputEmail4">Descripcion(*)</label>
+                                        <input type="text" class="form-control" id="txt_Descripcion_NivInc" placeholder="Nivel Incidencia" autocomplete="off">
+                                    </div>
+                                </div>
+
+                                <div class="form-row">
+                                    <button class="btn btn-success" id="btn_GuardarMdfNivInc"><i class="fa fa-floppy-o" aria-hidden="true"></i> Guardar</button>
+
+                                </div>
+                                <br />
+
+                                <div class="form-row">
+                                    <div class="table-responsive">
+                                        <table id="tbl_NivInc" class="table table-bordered table-hover display">
+                                            <thead>
+                                                <tr>
+                                                    <th>cod NivInc</th>
+                                                    <th>Descripción</th>
+                                                    <th>Opciones</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody></tbody>
+                                        </table>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div><!-- end card-->
+                    </div>
+
+
+                    <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 col-xl-3">
+                        <div class="card mb-3">
+                            <div class="card-header">
+                                <h3><i class="fa fa-check-square-o"></i>Medio Solicitud</h3>
+                            </div>
+
+                            <div class="card-body">
+                                <div class="form-row">
+                                    <div class="form-group col-md-12">
+                                        <label for="inputEmail4">Descripcion(*)</label>
+                                        <input type="text" class="form-control" id="txt_Descripcion_MedSol" placeholder="Medio solicitud" autocomplete="off">
+                                    </div>
+                                </div>
+
+                                <div class="form-row">
+                                    <button class="btn btn-success" id="btn_GuardarMdfMedSol"><i class="fa fa-floppy-o" aria-hidden="true"></i> Guardar</button>
+                                </div>
+                                <br />
+
+                                <div class="form-row">
+                                    <div class="table-responsive">
+                                        <table id="tbl_MedSol" class="table table-bordered table-hover display">
+                                            <thead>
+                                                <tr>
+                                                    <th>cod Med Sol.</th>
+                                                    <th>Descripción</th>
+                                                    <th>Opciones</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody></tbody>
+                                        </table>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div><!-- end card-->
+                    </div>
+
+                </div>
+
+            </div>
+        </div><!-- end card-->
+    </div>
+
+</div>
+
+

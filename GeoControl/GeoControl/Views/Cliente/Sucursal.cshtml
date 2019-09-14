@@ -1,0 +1,209 @@
+﻿
+@{
+    ViewData["Title"] = "Sucursal";
+    Html.RenderPartial("_RutaNavegacion");
+}
+
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC6rj9tbuEM8vtmsMccct0E3vQlryMNFis&callback=initMap"
+        async defer></script>
+
+
+<link href="~/Admin/assets/plugins/datatables/buttons.bootstrap4.min.css" rel="stylesheet" />
+<link href="~/Admin/assets/plugins/datatables/dataTables.bootstrap4.css" rel="stylesheet" />
+
+
+
+<link href="~/Admin/assets/plugins/datatables/dataTables.bootstrap4.css" rel="stylesheet" />
+<link href="~/Admin/assets/plugins/datatables/buttons.bootstrap4.min.css" rel="stylesheet" />
+<link href="~/Admin/assets/plugins/datatables/dataTables.bootstrap.css" rel="stylesheet" />
+
+/*select 2*/
+<link href="~/Admin/assets/plugins/select2/css/select2.min.css" rel="stylesheet" />
+<link href="~/Admin/assets/plugins/select2/css/select2-bootstrap4.css" rel="stylesheet" />
+
+@section scripts{
+
+
+    <script src="~/Admin/assets/plugins/datatables/dataTables.bootstrap4.js"></script>
+    <script src="~/Admin/assets/plugins/datatables/buttons.bootstrap4.min.js"></script>
+
+
+    <script src="~/Admin/assets/plugins/switchery/switchery.min.js"></script>
+    <script src="~/Admin/assets/plugins/datatables/jquery.dataTables.js"></script>
+    <script src="~/Admin/assets/plugins/datatables/dataTables.responsive.min.js"></script>
+    <script src="~/Admin/assets/js/Cliente/Sucursal.js"></script>
+}
+
+
+
+
+
+<div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+        <div class="card mb-3">
+            <div class="card-header">
+                <div class="row">
+                    <div class="col-6">
+                        <h3><i class="fa fa-table"></i> Lista Clientes</h3>
+
+                        <button class="btn btn-danger" id="btn_pruebas"> prueba</button>
+                        btn_pruebas
+
+                    </div>
+                    <div class="col-6 ">
+                        <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#FomModalSucursal" data-lat='-12.0440916' data-lng='-76.9259649'>
+                            <i class="fa fa-map-marker" aria-hidden="true"></i>  Nuevo  cliente
+                        </button>
+
+                    </div>
+
+                </div>
+            </div>
+
+
+
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table id="tbl_sucursal" class="table table-bordered table-hover display">
+                        <thead>
+                            <tr>
+                                <th>Cliente</th>
+                                <th>Sucursal</th>
+                                <th>Direccion</th>
+                                <th>Telefono</th>
+                                <th>Telefono2</th>
+                                <th>Correo</th>
+                                <th>Geo</th>
+                                <th>Pricipal</th>
+                                <th>FecMdf</th>
+                                <th>UsuMdf</th>
+                                <th>FecReg</th>
+                                <th>tipo sucursal</th>
+                                <th>Estado</th>
+                                <th>Opciones</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div><!-- end card-->
+    </div>
+</div>
+
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="FomModalSucursal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+
+            <div class="modal-body">
+
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                        <div class="card mb-3">
+                            <div class="card-header">
+                                <h3><i class="fa fa-check-square-o"></i> Mantenimiento de Sucursales</h3>
+                            </div>
+
+                            <div class="card-body">
+
+                                <div class="form-row">
+
+                                    <div class="form-group col-md-6">
+                                        <label for="inputAddress">Cliente(*)</label>
+                                        <select class="form-control" id="cb_cliente" style="width: 100%;"></select>
+                                    </div>
+
+
+                                    <div class="form-group col-md-5">
+                                        <label for="inputAddress">Nombre sucursal(*)</label>
+                                        <input type="text" class="form-control" id="txt_nom_int" placeholder="Ingrese Nombre sucursal">
+                                    </div>
+
+                                    <div class="form-group col-md-1">
+                                        <label for="inputCity">Principal</label>
+                                        <div class="custom-control custom-checkbox">
+                                            <input type="checkbox" class="custom-control-input" id="chk_esprincipal">
+                                            <label class="custom-control-label" for="chk_esprincipal"></label>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+
+                                <div class="form-row">
+                                    <div class="form-group col-md-4">
+                                        <label for="inputEmail4">Telefono(*)</label>
+                                        <input type="text" class="form-control" id="txt_tlf" placeholder="Telefono" autocomplete="off">
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                        <label for="inputPassword4">Telefono</label>
+                                        <input type="text" class="form-control" id="txt_tlf2" placeholder="Telefono" autocomplete="off">
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                        <label for="inputPassword4">Correo(*)</label>
+                                        <input type="text" class="form-control" id="txt_correo" placeholder="Correo" autocomplete="off">
+                                    </div>
+                                </div>
+
+                                <div class="form-row">
+                                    <div class="form-group col-md-12">
+                                        <label for="inputAddress">Direccion(*)</label>
+                                        <input type="text" class="form-control" id="txt_dir" placeholder="Direccion.">
+                                    </div>
+                                </div>
+
+                                <div class="form-row">
+                                    <div class="form-group col-sm-2 col-md-4">
+                                        <label for="inputCity">Activar Geolocalizacion</label>
+                                        <div class="custom-control custom-checkbox">
+                                            <input type="checkbox" class="custom-control-input" id="defaultUnchecked">
+                                            <label class="custom-control-label" for="defaultUnchecked">Activar Geolocalizacion?</label>
+                                        </div>
+
+
+                                    </div>
+
+                                    <div class="form-group col-sm-4 col-md-4">
+                                        <label for="inputCity">Latitud</label>
+                                        <input type="text" disabled class="form-control" id="txt_lng">
+                                    </div>
+
+                                    <div class="form-group col-sm-4 col-md-4">
+                                        <label for="inputCity">Longitud</label>
+                                        <input type="text" disabled class="form-control" id="txt_lat">
+                                    </div>
+
+                                </div>
+
+
+                            </div>
+                        </div><!-- end card-->
+                    </div>
+
+                </div>
+
+
+                <div class="row">
+                    <div class="col-md-12 modal_body_map">
+                        <div class="location-map" id="location-map">
+                            <div style="width: 600px; height: 400px;" id="map_canvas"></div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="modal-footer">
+                <button class="btn btn-success" id="btn_GuardarMdfSucursal"><i class="fa fa-floppy-o" aria-hidden="true"></i> Guardar</button>
+                <button type="button" class="btn btn-danger" id="btn_CancelarGuardarMdfCliente" data-dismiss="modal">Cancelar</button>
+            </div>
+        </div>
+    </div>
+</div>

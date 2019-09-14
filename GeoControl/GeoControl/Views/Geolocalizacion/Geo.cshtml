@@ -1,0 +1,391 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+   // Html.RenderPartial("_RutaNavegacion");
+}
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC6rj9tbuEM8vtmsMccct0E3vQlryMNFis&callback=initMap"
+            async defer></script>
+
+
+<div class="row">
+    <div class="col-xl-3">
+    
+            <ol class="breadcrumb float-left">
+                <li class="breadcrumb-item active">
+
+              
+                        <div class="form-inline">
+                            <input id="address" type="text" placeholder="Busqueda" class="form-control">
+                            <input class="btn btn-sm btn-primary" type="button" value="buscar" id="txt_buscar">
+                        </div>
+                   
+
+                </li>
+            </ol>
+
+    </div>
+</div>
+
+
+<div id="map" style="width:100%;height:1000px;">
+
+
+</div>
+
+
+
+<script src="~/Admin/assets/js/jquery.min.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.9.2/firebase.js"></script>
+<!-- firebase  03 enlaces obligatorios-->
+<script src="https://www.gstatic.com/firebasejs/5.8.4/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.8.4/firebase-database.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.8.4/firebase-firestore.js"></script>
+<script type="text/javascript">
+
+
+    var lat_navegador = -12.079231;
+    var lon_navegador = -77.0161324;
+    //obtenemos  la latitud y  longitud  del  navegador
+
+
+
+    function showPosition(position) {
+         lat_navegador = position.coords.latitude;
+         lon_navegador = position.coords.longitude;
+       // alertify.error('Configuracion aplicada' + lat_navegador + '-' + lon_navegador);
+    }
+
+
+        // Initialize Firebase
+        var config = {
+            apiKey: "AIzaSyBAccexU3bw5W-JrIACOoZLFmkKTWPaDc0",
+        authDomain: "idsi-geo.firebaseapp.com",
+        databaseURL: "https://idsi-geo.firebaseio.com",
+        projectId: "idsi-geo",
+        storageBucket: "idsi-geo.appspot.com",
+        messagingSenderId: "197254829001"
+      };
+firebase.initializeApp(config);
+
+
+
+
+
+  $(document).ready(function () {
+
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(showPosition);
+        }
+        else {
+            alertify.error('su Navegador No soporta geolocalización');
+        }
+
+    initMap();
+});
+
+
+
+
+
+var map;
+var ruc_empresa = '@ViewData["ruc_empresa"]';
+var marcadores = [];
+    var cod_documento;
+
+    var posicion_anterior = [];
+    var posicion_anterior_copia = [];
+
+
+
+
+
+
+
+        var db_idsi = firebase.firestore();
+
+
+
+
+
+    $('#btn_administracion').click(function () {
+
+
+
+
+    });
+
+
+
+
+
+    $("td.cod").click(function () {
+
+        var iddoc = $(this).find("td.cod").eq(1).html();
+        alertify.error(iddoc);
+
+    });
+
+
+
+    $("#chk_alertaposicion_general").click(function () {
+
+     //   $("#btn_confirmar").show();
+        var thisCheck = $(this);
+        if ($("#chk_alertaposicion_general").is(':checked')) {
+
+            alertify.confirm('Cofirmacion notificacion de posicion', '¿Esta seguro de activar las notificaciones de todos los vendedores?',
+                function () {
+                    $("input[type=checkbox]").prop("checked", true);
+                    //recorremos la tabla
+                    $("#tbl_vendedores_configuracion tr").each(function () {
+                        // alertify.success($(this).find("td").eq(0).html());
+                        var iddoc = $(this).find("td").eq(0).html();
+                        db_idsi.collection("tb_geolocalizacion").doc(iddoc).update({
+                            "estado_alerta": true
+                        });
+                    });
+
+
+                }, function () {
+                    alertify.error('Cancelado')
+                });
+
+
+        } else {
+
+            alertify.confirm('Cofirmacion notificacion de posicion', '¿Esta seguro de desactivar las notificaciones de todos los vendedores?',
+                function () {
+                    $("input[type=checkbox]").prop("checked", false);
+
+                    //recorremos la tabla
+                    $("#tbl_vendedores_configuracion tr").each(function () {
+                        // alertify.success($(this).find("td").eq(0).html());
+                        var iddoc = $(this).find("td").eq(0).html();
+                        db_idsi.collection("tb_geolocalizacion").doc(iddoc).update({
+                            "estado_alerta": false
+                        });
+                    });
+                }
+                , function () {
+                    alertify.error('Cancelado');
+                });
+        }
+
+
+
+
+    });
+
+
+
+
+
+    function initMap() {
+        try {
+            var myubicacion = { lat: lat_navegador, lng: lon_navegador };
+            map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 14,
+                center: myubicacion,
+                gestureHandling: 'greedy'
+            });
+
+        } catch (error) {
+
+           // alertify.error(error);
+
+         } finally { }
+
+
+    }
+
+
+
+
+
+
+    //geolocalizacion VENDEDORES
+    //LECTURA DE DATOS DESDE FIREBASE
+    var db_idsi = firebase.firestore();
+var tabla_vendedores = document.getElementById('tbl_vededores');
+
+    db_idsi.collection("tb_geolocalizacion").where("ruc_empresa", "==", ruc_empresa).where("estado_visible", "==", true).where("estado_activo", "==", true).where("estado_online", "==", true).onSnapshot((querySnapshot) => {
+
+        EliminarMarcadores();
+        querySnapshot.forEach((doc) => {
+            //copia del anterir del objeto
+            RegistrarPosicionAnterior(doc);
+
+
+            //control estado_online
+            var date2 = new Date((doc.data().fecha.seconds*1000));
+            ValidarFecha(date2, doc.data().min_online, doc.id);
+            CrearMarcadores(doc);
+        });
+
+        posicion_anterior_copia = posicion_anterior;
+        posicion_anterior = [];
+
+    });
+
+
+
+    //filtro de mensajes
+    db_idsi.collection("tb_geolocalizacion").where("ruc_empresa", "==", ruc_empresa).where("estado_visible", "==", true).where("estado_activo", "==", true).where("estado_online", "==", true).where("estado_alertado", "==", true).onSnapshot((querySnapshot) => {
+        querySnapshot.forEach((doc) => {
+            if (doc.data().estado_alerta == true) {
+                if (doc.data().estado_alertado == true) {
+                    alertify.success('El vendedor:' + doc.data().nombres + ' Actualizó su posición.');
+                    ActualizarVendedorAlertado(doc.id);
+                }
+            }
+        });
+    });
+    //filtro de mensaje
+
+
+
+
+
+
+
+
+
+
+
+
+    function CrearMarcadores(doc) {
+
+
+    var marker = new google.maps.Marker({
+        position: new google.maps.LatLng(doc.data().posicion._long, doc.data().posicion._lat),
+        map: map,
+        title: doc.data().nombres,
+        icon: '/Recursos/Marcadores/marcado_idsi.png',
+        id_marcador: doc.id
+
+        });
+
+
+
+
+        var estado_vendedor = "";
+
+
+        estado_vendedor = "<span class='label label-success'>Online</span>";
+
+   // var texto = "<div class='card' style='width: 18rem;'><div class='card-body'><h5 class='card-title'>" + doc.data().nombres + "</h5><p class='card-text'> <h5>Codigo:" + doc.data().cod_vendedor + "</h5> </p> <h5>Bateria:" + doc.data().p_bateria + "</h5><h5>Ultima conexion:" + marker.get('id_marcador') + "</h5> </div><div>";
+        var texto = "<div class='card' style='width: 18rem;'>" + estado_vendedor+"<div class='card-body'><b> <h6 class='card-title'>" + doc.data().nombres + "</h6> </b><p class='card-text'> <h6>Codigo:" + doc.data().cod_vendedor + "</h6> </p> <h6>Bateria:" + doc.data().p_bateria + "</h6><h6>Fecha:" + timeConverter(doc.data().fecha.seconds) + "</h6> </div><div>";
+
+    var infowindow = new google.maps.InfoWindow({
+        content: texto
+    });
+
+
+    infowindow.open(map, marker);
+        marcadores.push(marker);
+    }
+
+
+
+
+function PintarMarcadore(map) {
+    for (var i = 0; i < marcadores.length; i++) {
+        marcadores[i].setMap(map);
+    }
+
+    }
+
+
+
+    function PintarMarcador(map) {
+        map.setMap();
+    }
+
+
+
+function EliminarMarcadores() {
+    PintarMarcadore(null);
+    markers = [];
+}
+
+function timeConverter(t) {
+        var a = new Date(t * 1000);
+        var today = new Date();
+        var yesterday = new Date(Date.now() - 86400000);
+        var months = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Setiembre', 'Octubre', 'Noviembre', 'Diciembre'];
+        var year = a.getFullYear();
+        var month = months[a.getMonth()];
+        var date = a.getDate();
+        var hour = a.getHours();
+        var min = a.getMinutes();
+        if (a.setHours(0, 0, 0, 0) == today.setHours(0, 0, 0, 0))
+            return 'Hoy, ' + hour + ':' + min;
+        else if (a.setHours(0, 0, 0, 0) == yesterday.setHours(0, 0, 0, 0))
+            return 'Ayer, ' + hour + ':' + min;
+        else if (year == today.getFullYear())
+            return date + ' ' + month + ', ' + hour + ':' + min;
+        else
+            return date + ' ' + month + ' ' + year + ', ' + hour + ':' + min;
+    }
+
+
+
+
+
+    function EliminarMarcadorPorIndice(indice){
+        if (indice != null) {
+            marcadores.splice(indice, 1);
+        }
+    }
+
+
+
+    function ActualizarVendedorOffLine(codigo) {
+        db_idsi.collection("tb_geolocalizacion").doc(codigo).update({
+            "estado_online": false
+        }).then(function () {
+         //  validamos si actuliza con false el parametro estado online  alertify.success('Actualizado');
+            });
+    }
+
+
+    function ActualizarVendedorAlertado(codigo) {
+        db_idsi.collection("tb_geolocalizacion").doc(codigo).update({
+            "estado_alertado": false
+        }).then(function () {
+            //  validamos si actuliza con false el parametro estado online  alertify.success('Actualizado');
+        });
+    }
+
+
+    function ValidarFecha(fechaConexion, minutos, codigo) {
+
+        if (minutos != 0 && minutos != null) {
+
+            var FechaActual = new Date();
+            var diferencia = ((FechaActual.getTime()) - (fechaConexion.getTime())) / 1000 / 60;
+
+            if (diferencia > minutos) {
+                ActualizarVendedorOffLine(codigo);
+            }
+        }
+
+    }
+
+
+
+
+
+    function RegistrarPosicionAnterior(doc) {
+            var id_tbl = doc.id;
+            var latitud = doc.data().posicion._lat;
+            var longitud = doc.data().posicion._long;
+            var objmemoria = { id: id_tbl, _lat: latitud, _long: longitud };
+            posicion_anterior.push(objmemoria);
+    }
+
+
+
+</script>
+
+

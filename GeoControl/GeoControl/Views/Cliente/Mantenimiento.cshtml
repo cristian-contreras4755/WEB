@@ -1,0 +1,201 @@
+﻿<div class="row">
+    <div class="col-xl-12">
+        <div class="breadcrumb-holder">
+            <h1 class="main-title float-left">Incidencia</h1>
+            <ol class="breadcrumb float-right">
+                <li class="breadcrumb-item">Home</li>
+                <li class="breadcrumb-item active">Dashboard</li>
+            </ol>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+<script src="~/Admin/assets/js/jquery.min.js"></script>
+<!--
+<script src="~/Admin/assets/plugins/datatables/jquery.dataTables.js"></script>
+<script src="~/Admin/assets/plugins/datatables/dataTables.bootstrap.js"></script>
+
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap4.min.css" />
+<script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap4.min.js"></script>
+<script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
+
+    -->
+@*<link href="~/Admin/assets/plugins/datatables/dataTables.bootstrap4.css" rel="stylesheet" />*@
+<script src="~/Admin/assets/plugins/datatables/jquery.dataTables.js"></script>
+<script src="~/Admin/assets/plugins/datatables/buttons.bootstrap4.min.js"></script>
+<script src="~/Admin/assets/plugins/datatables/dataTables.responsive.min.js"></script>
+<script src="~/Admin/assets/js/Cliente/Cliente.js"></script>
+
+
+<div class="row">
+
+    <div class="col-xl-6">
+        <div class="card">
+            <div class="card-header">
+                <div class="row">
+                    <h3><i class="fa fa-table"></i> Grupo corporativo</h3>
+                </div>
+
+            </div>
+            <div class="card-body">
+
+               
+                            <div class="card ">
+                                <div class="card-header bg-success">
+                           
+                                </div>
+                                <div class="card-body">
+                                    <form autocomplete="off">
+                                        <div class="row">
+
+                                     
+                                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                                    <div class="form-group">
+                                                        <label for="inputAddress">Nombre Grupo corporativo(*)</label>
+                                                        <input type="text" class="form-control" id="txt_nom_grupocorp" placeholder="Nombre Grupo.">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                                    <div class="form-group">
+                                                        <label for="inputEmail4">color corporativo(RGB)</label>
+                                                        <input type="email" class="form-control" id="txt_color_gc" placeholder="Color" autocomplete="off">
+                                                    </div>
+                                                </div>
+                                        
+
+                                        </div>
+
+                                        <div class="row d-flex justify-content-center">
+                                            <div class="form-row">
+                                                <div class="form-group">
+                                                    <button id="btn_guardarMdf" class="btn btn-success"><i class="fa fa-floppy-o"></i> Guardar</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+
+                                </div>
+                            </div>
+            <br />
+
+
+
+
+
+                <div class="table-responsive">
+                    <table id="tbl_grcorp" class="table table-bordered table-hover display">
+                        <thead>
+                            <tr>
+                                <th>Nombre</th>
+                                <th>Color</th>
+                                <th>Estado</th>
+                                <th>Opciones</th>
+                            </tr>
+                        </thead>
+                    </table>
+
+                </div>
+
+            </div><!-- end card-->
+        </div>
+    </div>
+
+
+
+    <!-- icicio  formulario crupo corporativo
+    <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Grupo corporativo</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+
+                    <form autocomplete="off" action="" method="post">
+                        <div class="form-group">
+                            <label for="inputAddress">Nombre Grupo corporativo(*)</label>
+                            <input type="text" class="form-control" id="txt_nom_grupocorp" placeholder="Nombre Grupo.">
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group col-md-10">
+                                <label for="inputEmail4">color corporativo(RGB)</label>
+                                <input type="email" class="form-control" id="txt_color_gc" placeholder="Color" autocomplete="off">
+                            </div>
+                            <div class="col-md-2">
+                                <button class="btn btn-success">Registrar</button>
+                            </div>
+
+                        </div>
+                    </form>
+
+                </div>
+                <div class="modal-footer align-content-lg-start">
+                    <button id="btn_GuardarGc" class="btn btn-success">Guardar</button>
+                    <button id="btn_salitFormGc" type="button" class="btn btn-danger" data-dismiss="modal">Salir</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    -->
+
+
+
+    <div class="col-xl-6">
+        <div class="card mb-3">
+            <div class="card-header">
+                <div class="row">
+
+                    <h3><i class="fa fa-table"></i> Tipo  Documento</h3>
+
+                    <div class="ml-auto mr-3">
+                        <button type="submit" class="btn btn-success">Registrar</button>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table id="tbl_tipo_doc" class="table table-bordered table-hover display">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Position</th>
+                                <th>Office</th>
+
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+
+            </div>
+
+        </div><!-- end card-->
+    </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
